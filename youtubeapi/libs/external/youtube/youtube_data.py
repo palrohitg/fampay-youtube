@@ -14,7 +14,7 @@ class YoutubeData:
         self.query = query
         self.max_results = max_results
 
-    def get_search_details(self):
+    def get_search_details(self, video_list):
         print("Start the request here as well")
 
         youtube_api_key = VideoDetailsDBManager().get_youtube_api_key()
@@ -42,7 +42,7 @@ class YoutubeData:
                     thumbnail_url = item.get("snippet").get("thumbnails").get("default").get("url")
                     video_obj = VideoDetail(video_id=video_id, title=title, description=description,
                                             published_at=published_at, thumbnail_url=thumbnail_url)
-                    if video_id:
+                    if video_id and video_id not in video_list:
                         VideosList.append(video_obj)
                 return response.status_code, VideosList
             if response.status_code == 403:

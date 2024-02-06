@@ -32,4 +32,12 @@ class VideoDetailsDBManager:
             print(e)
         return None
 
+    def get_video_all_details(self):
+        try:
+            return VideoDetail.objects.filter()
+        except Exception as e:
+            print(e)
+        return None
+
+
 
