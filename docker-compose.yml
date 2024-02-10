@@ -30,9 +30,9 @@ services:
     build: .
     environment:
       - TZ=Asia/Kolkata
-    command: bash -c "sleep 10 && while true; do python3 manage.py tasks; sleep 10; done"
+    command: bash -c "sleep 10 && while true; do python3 manage.py task; sleep 10; done"
     volumes:
-      - .:/logservice
+      - .:/fampay-youtube
     networks:
       - my-network
     depends_on:

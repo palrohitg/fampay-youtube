@@ -23,8 +23,7 @@
 
 2. To Setup and Run Application + DataBase + CRON: 
 
-        chmod +x application_container_start.sh
-        ./application_container_start.sh
+        docker compose up 
 
 
 
@@ -46,6 +45,13 @@ curl --location 'http://localhost:8000/api/create-key' \
     "key" : "testing"
 }'
 ```
+
+3. Search API
+```commandline
+curl --location 'http://localhost:8000/api/search?title=%20Cricket%2024%20Live%20' \
+--header 'Cookie: csrftoken=jH2qzTXI1DfSRW01HlHj0mJq49lqiMJ5BAGf6pZKhIfiz6YoLim14bD6V06tde7v'
+```
+
 
 ## 📜 LICENSE
 

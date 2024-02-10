@@ -20,11 +20,10 @@ class VideoDetailController:
         return video_list
 
     def search_video_with_title_or_description(self, title, description):
-        filter = {"active" : True}
+        filter = {}
         if title:
-            filter["title__in"] = title
+            filter["title__icontains"] = title
         if description:
-            filter["description__in"] = description
-
+            filter["description__icontains"] = description
         videos = VideoDetailsDBManager().get_video_all_details_filter(filter)
         return videos

@@ -35,10 +35,10 @@ class SearchVideo(APIView):
     serializer_class = SearchSerializer
 
     def get(self, request):
-        serializer = self.serializer_class(data=request.data)
+        serializer = self.serializer_class(data=request.query_params)
         serializer.is_valid(raise_exception=True)
         title = serializer.validated_data.get("title")
-        description = serializer.vlaid_data.get("description")
+        description = serializer.validated_data.get("description")
         search_response = VideoDetailController().search_video_with_title_or_description(title,description)
         serialized_data = self.serializer_class(search_response, many=True).data
         return utils.get_success_response(serialized_data)
