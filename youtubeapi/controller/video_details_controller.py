@@ -18,3 +18,13 @@ class VideoDetailController:
         for video in videos:
             video_list.append(video.video_id)
         return video_list
+
+    def search_video_with_title_or_description(self, title, description):
+        filter = {"active" : True}
+        if title:
+            filter["title__in"] = title
+        if description:
+            filter["description__in"] = description
+
+        videos = VideoDetailsDBManager().get_video_all_details_filter(filter)
+        return videos
